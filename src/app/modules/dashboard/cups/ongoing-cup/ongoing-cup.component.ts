@@ -36,7 +36,6 @@ export class OngoingCupComponent implements OnInit {
   }
 
   saveCup() {
-    this.cup.matches.push({timeA: this.team1, scoreA: this.score1, timeB: this.team2, scoreB: this.score2});
     const request = { "matches": this.cup.matches};
     console.log(request);
     this.cupService.patchMatchOnCup(request, this.cup.id).subscribe(data => {

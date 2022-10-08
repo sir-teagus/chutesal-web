@@ -9,6 +9,54 @@ import { URL } from 'src/app/shared/utils/constants';
 })
 export class SchoolService {
 
+  schools = [
+    {
+        "id": 1,
+        "name": "São Paulo",
+        "address": "Avenida Paulista, 123",
+        "venues": [
+            "Allianz Parque",
+            "Paulista",
+            "Neo Quimica",
+            "Olimpico do Ibirapuera",
+            "Portuguesa"
+        ],
+        "cupManager": "Diego",
+        "createdAt": "2022-10-05T12:46:16.298Z",
+        "updatedAt": "2022-10-05T12:46:16.298Z"
+    },
+    {
+        "id": 2,
+        "name": "teste2",
+        "address": "Avenida Paulista, 321",
+        "venues": [
+            "Allianz Parque",
+            "teste",
+            "Neo Quimica",
+            "Olimpico do Ibirapuera",
+            "Portuguesa"
+        ],
+        "cupManager": "Thiago",
+        "createdAt": "2022-10-05T12:46:16.298Z",
+        "updatedAt": "2022-10-05T12:46:16.298Z"
+    },
+    {
+        "id": 3,
+        "name": "teste 3",
+        "address": "Rua teste, 555",
+        "venues": [
+            "campo 1",
+            "campo 2",
+            "campo 3",
+            "campo 4",
+            "campo 5"
+        ],
+        "cupManager": "Lucas",
+        "createdAt": "2022-10-05T12:46:16.298Z",
+        "updatedAt": "2022-10-05T12:46:16.298Z"
+    },
+  ];
+
 constructor(private http: HttpClient) { }
 
 public getSchools(): Observable<School[]> {

@@ -9,6 +9,8 @@ import { SchoolService } from 'src/app/core/services/school/school.service';
 })
 export class CreateSchoolComponent implements OnInit {
 
+  schools = this.schoolService.schools
+  selectedSchool = false;
   school = new School;
   address!: string;
   venue1!: string;
@@ -21,6 +23,10 @@ export class CreateSchoolComponent implements OnInit {
 
   ngOnInit() {
     this.getSchool();
+  }
+
+  selectSchool() {
+    this.selectedSchool = true
   }
 
   submitData() {

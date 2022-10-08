@@ -1,14 +1,14 @@
-<div class="container">
+<div class="container" *nfIf="selectedSchool">
 
   <div class="title">
     <h1>Editar Escola</h1>
   </div>
 
-  <div class="form">
+  <div class="form" *nfIf="selectedSchool">
     <h4>Nome da escola</h4>
-    <span>{{school.name}}</span>
+    <span></span>
     <h4 for="endEnroll">Dono da Copa</h4>
-    <span>{{school.cupManager}}</span>
+    <span></span>
     <div class="form__input">
       <label for="startEnroll">Endereço</label>
       <input type="text" [(ngModel)]="address">

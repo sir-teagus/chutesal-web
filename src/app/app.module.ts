@@ -19,6 +19,7 @@ import { EnrollCupComponent } from './modules/dashboard/cups/enroll-cup/enroll-c
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OngoingCupComponent } from './modules/dashboard/cups/ongoing-cup/ongoing-cup.component';
 import { FinishedCupComponent } from './modules/dashboard/cups/finished-cup/finished-cup.component';
+import { SchoolsComponent } from './modules/dashboard/schools/schools.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FinishedCupComponent } from './modules/dashboard/cups/finished-cup/fini
     CreateSchoolComponent,
     EnrollCupComponent,
     OngoingCupComponent,
-    FinishedCupComponent
+    FinishedCupComponent,
+    SchoolsComponent
   ],
   imports: [
     BrowserModule,

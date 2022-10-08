@@ -12,6 +12,7 @@ import { LoginService } from 'src/app/core/services/login/login.service';
 export class EnterCupComponent implements OnInit {
 
   onGoingCups: Cup[] = [];
+  myCups: Cup[] = [];
   profile = this.loginService.profile;
   subscribe = false;
   teamName: string = '';
@@ -32,11 +33,12 @@ export class EnterCupComponent implements OnInit {
   getMyCups() {
     this.cupService.getCupsBySchools(this.profile.school).subscribe(data => {
       let myCups = data;
-      for (let i = 0; i < myCups.length; i++) {
-        const signUpPeriod = myCups[i].signUpPeriod
-        switch (this.verifyOngoingCup(signUpPeriod[signUpPeriod.length - 1])) {
+      for (let i = 0; i < this.myCups.length; i++) {
+        const signUpPeriod = this.myCups[i].signUpPeriod
+        const cupGamesPeriod = this.myCups[i].cupGamesPeriod
+        switch (this.verifyOngoingCup(signUpPeriod[signUpPeriod.length - 1], cupGamesPeriod[cupGamesPeriod.length - 1])) {
           case 'enroll':
-            this.onGoingCups.push(myCups[i]);
+            this.onGoingCups.push(this.myCups[i]);
             break;
           default:
             break;
@@ -46,13 +48,14 @@ export class EnterCupComponent implements OnInit {
     })
   }
 
-  verifyOngoingCup(value: string){
+  verifyOngoingCup(value: string, value2: string) {
     const date = this.formatDate(value);
+    const lastDate = this.formatDate(value2);
     const actualDate = new Date();
-    if(
-      date < actualDate
-    ) {
-      return 'onGoing';
+    if(lastDate < actualDate) {
+      return 'ended';
+    } else if(date < actualDate) {
+      return 'onGoing'
     } else {
       return 'enroll';
     }

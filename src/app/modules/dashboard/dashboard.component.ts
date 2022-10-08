@@ -10,7 +10,7 @@ import { LoginService } from 'src/app/core/services/login/login.service';
 })
 export class DashboardComponent implements OnInit {
 
-  page = 'cups';
+  page = 'schools';
 
   constructor() { }
 
