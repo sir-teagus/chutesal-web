@@ -1,1 +1,1 @@
-export const URL = 'http://localhost:3333/';
+export const URL = 'https://chutesal-api.herokuapp.com/';
