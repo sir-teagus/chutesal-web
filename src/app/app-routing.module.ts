@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateCupComponent } from './create-cup/create-cup.component';
-import { CreateTeamComponent } from './create-team/create-team.component';
-import { CupsComponent } from './cups/cups.component';
-import { EditSchoolsComponent } from './edit-schools/edit-schools.component';
-import { SchoolsComponent } from './schools/schools.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { LoginPageComponent } from './modules/login-page/login-page.component';
 
 const routes: Routes = [
-  {path: 'cups', component: CupsComponent},
-  {path: 'create-team', component: CreateTeamComponent},
-  {path: 'create-cup', component: CreateCupComponent},
-  {path: 'schools', component: SchoolsComponent},
-  {path: 'edit-schools/:id', component: EditSchoolsComponent},
-  {path: '', redirectTo: 'cups', pathMatch: 'full'}
+  {
+    path: 'login',
+    component: LoginPageComponent
+  },{
+    path: 'dashboard',
+    component: DashboardComponent
+  },{
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

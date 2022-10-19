@@ -1,0 +1,117 @@
+<div class="container" *ngIf="!enroll && !onGoing && !finished">
+
+  <!-- <div class="buttons">
+    <button class="buttons__create-team">Criar Time</button>
+    <button class="buttons__enter-champ">Entrar em um campeonato</button>
+    <button class="buttons__create-champ">Criar campeonato</button>
+  </div> -->
+
+  <div class="cards">
+
+    <div class="cards__complete">
+      <div class="cards__complete__cups">
+        <h1>Campeonatos Finalizados</h1>
+
+        <div *ngIf="endedCups">
+          <div class="cards__complete__cups__cup" *ngFor="let endedCup of endedCups" (click)="selectCup(endedCup, 'finished')">
+            <h3>{{endedCup.name}}</h3>
+            <div class="cards__complete__cups__cup__card__info">
+              <div class="cards__complete__cups__cup__card__info__enroll">
+                <h4>Período de inscrição:</h4>
+                <span>{{endedCup.signUpPeriod[0] | date}} --- {{endedCup.signUpPeriod[1] | date}}</span>
+              </div>
+              <div class="cards__complete__cups__cup__card__info__games">
+                <h4>Período dos jogos:</h4>
+                <span>{{endedCup.cupGamesPeriod[0] | date}} --- {{endedCup.cupGamesPeriod[1] | date}}</span>
+              </div>
+              <div class="cards__complete__cups__cup__card__info__more">
+                <span>Resultados >></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards__complete__cups__no-cup" *ngIf="!endedCups">
+          <h2>Nenhum campeonato finalizado até o momento</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards__complete">
+
+      <div class="cards__complete__cups">
+        <h1>Campeonatos anunciados</h1>
+
+        <div *ngIf="enrollCups">
+
+          <div class="cards__complete__cups__cup" *ngFor="let enrollCup of enrollCups">
+
+            <div class="cards__complete__cups__cup__card" (click)="selectCup(enrollCup, 'enroll')">
+              <h3>{{enrollCup.name}}</h3>
+              <div class="cards__complete__cups__cup__card__info">
+                <div class="cards__complete__cups__cup__card__info__enroll">
+                  <h4>Período de inscrição:</h4>
+                  <span>{{enrollCup.signUpPeriod[0] | date}} --- {{enrollCup.signUpPeriod[1] | date}}</span>
+                </div>
+                <div class="cards__complete__cups__cup__card__info__games">
+                  <h4>Período dos jogos:</h4>
+                  <span>{{enrollCup.cupGamesPeriod[0] | date}} --- {{enrollCup.cupGamesPeriod[1] | date}}</span>
+                </div>
+                <div class="cards__complete__cups__cup__card__info__more">
+                  <span>Se inscreva >></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards__complete__cups__no-cup" *ngIf="!enrollCups">
+        <h2>Você não está em nenhuma campeonato</h2>
+      </div>
+    </div>
+
+    <div class="cards__complete__cups">
+
+      <h1>Campeonatos em andamento</h1>
+      <div *ngIf="onGoingCups">
+
+        <div class="cards__complete__cups__cup" *ngFor="let onGoingCup of onGoingCups" (click)="selectCup(onGoingCup, 'ongoing')">
+          <h3>{{onGoingCup.name}}</h3>
+          <div class="cards__complete__cups__cup__card__info">
+            <div class="cards__complete__cups__cup__card__info__enroll">
+              <h4>Período de inscrição:</h4>
+              <span>{{onGoingCup.signUpPeriod[0] | date}} --- {{onGoingCup.signUpPeriod[1] | date}}</span>
+            </div>
+            <div class="cards__complete__cups__cup__card__info__games">
+              <h4>Período dos jogos:</h4>
+              <span>{{onGoingCup.cupGamesPeriod[0] | date}} --- {{onGoingCup.cupGamesPeriod[1] | date}}</span>
+            </div>
+            <div class="cards__complete__cups__cup__card__info__more">
+              <span>Andamento</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards__cups__no-cup" *ngIf="!onGoingCups">
+          <h2>Não existe nenhum campeonato em andamento</h2>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div *ngIf="enroll">
+  <app-enroll-cup [cup]="selectedCup" (enroll)="exitEnroll($event)"></app-enroll-cup>
+</div>
+
+<div *ngIf="onGoing">
+  <app-ongoing-cup [cup]="selectedCup" (ongoing)="exitOngoing($event)"></app-ongoing-cup>
+</div>
+
+<div *ngIf="finished">
+  <app-finished-cup [cup]="selectedCup" (finished)="exitFinished($event)"></app-finished-cup>
+</div>
