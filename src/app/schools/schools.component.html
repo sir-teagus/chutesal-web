@@ -1,0 +1,22 @@
+<div class="page-container">
+  <div class="title">
+    <h1>Unidades cadastradas</h1>
+    <button mat-raised-button class="title__new-school" (click)="goToEdit(0)">Criar nova escola</button>
+  </div>
+  <div class="units-wrapper">
+    <div class="units-wrapper__unit" *ngFor="let school of filteredSchools">
+      <mat-card class="units-wrapper__unit__card">
+        <h2>{{school.name}}</h2>
+        <h3>Endereço:</h3>
+        <p>{{ school.address }}</p>
+        <h3>Responsável</h3>
+        <p>{{school.cupManager.name}}</p>
+        <h3>Campos:</h3>
+        <ul>
+          <li *ngFor="let venue of school.venues">{{ venue }}</li>
+        </ul>
+        <button mat-raised-button color="primary" (click)="goToEdit(school.id)">Editar</button>
+      </mat-card>
+    </div>
+  </div>
+</div>

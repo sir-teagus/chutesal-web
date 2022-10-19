@@ -1,0 +1,59 @@
+.navigator{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 5rem;
+  background-color: #2e7d32 ;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+  &__menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 75rem;
+
+    &__buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 5rem;
+        padding: 0 1.5rem;
+        cursor: pointer;
+        transition: 100ms ease-in-out;
+
+        &__text {
+          color: #fcfcfc;
+          font-size: 1.2rem;
+        }
+      }
+
+      &__btn:hover {
+        background-color: #1b5e20 ;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        transition: 100ms ease-in-out;
+      }
+    }
+
+    &__profile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__name {
+        margin-right: 2rem;
+        color: #fcfcfc;
+        font-size: 1.5rem;
+        padding: 3rem 0 .5rem;
+        height: 2rem;
+      }
+    }
+  }
+}
