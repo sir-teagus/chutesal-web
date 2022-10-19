@@ -1,0 +1,72 @@
+<div class="container" *ngIf="!createSchool">
+
+  <div class="title">
+    <h1>Escolas</h1>
+  </div>
+
+  <button class="create-school-btn" (click)="onCreateSchool()">Criar Escola</button>
+
+  <div class="schools-list">
+    <div class="schools-list__school" *ngFor="let school of schools">
+      <h4>{{school.name}}</h4>
+      <div class="schools-list__school__address">
+        <h5>Endereço</h5>
+        <p>{{school.address}}</p>
+      </div>
+      <div class="schools-list__school__cup-manager">
+        <h5>Cup Manager</h5>
+        <p>{{school.cupManager}}</p>
+      </div>
+      <h5>Campos</h5>
+      <div>
+        <p *ngFor="let venue of school.venues">{{venue}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-login" *ngIf="!loggedIn && createSchool">
+  <app-login-screen (logIn)="login($event)"></app-login-screen>
+</div>
+
+<div class="create-schools" *ngIf="createSchool && loggedIn">
+  <div class="form">
+    <h4>Nome da escola</h4>
+    <span>{{school.name}}</span>
+    <h4 for="endEnroll">Dono da Copa</h4>
+    <span>{{school.cupManager}}</span>
+    <div class="form__input">
+      <label for="startEnroll">Nome</label>
+      <input type="text" [(ngModel)]="newName">
+    </div>
+    <div class="form__input">
+      <label for="startEnroll">Endereço</label>
+      <input type="text" [(ngModel)]="newAddress">
+    </div>
+    <div class="form__input">
+      <label for="startEnroll">Cup Manager</label>
+      <input type="text" [(ngModel)]="newCupManager">
+    </div>
+    <div class="form__input">
+      <label for="startEnroll">Campo</label>
+      <input type="text" [(ngModel)]="newVenue1">
+    </div>
+    <div class="form__input">
+      <label for="startEnroll">Campo</label>
+      <input type="text" [(ngModel)]="newVenue2">
+    </div>
+    <div class="form__input">
+      <label for="startEnroll">Campo</label>
+      <input type="text" [(ngModel)]="newVenue3">
+    </div>
+    <div class="form__input">
+      <label for="startEnroll">Campo</label>
+      <input type="text" [(ngModel)]="newVenue4">
+    </div>
+    <div class="form__input">
+      <label for="startEnroll">Campo</label>
+      <input type="text" [(ngModel)]="newVenue5">
+    </div>
+    <button (click)="newSchool()">Salvar</button>
+  </div>
+</div>

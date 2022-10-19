@@ -1,0 +1,10 @@
+<div class="nav">
+  <app-nav (page)="changePage($event)"></app-nav>
+</div>
+<div class="container">
+  <app-cups *ngIf="page === 'cups'"></app-cups>
+  <app-enter-cup *ngIf="page === 'enter-cup'"></app-enter-cup>
+  <app-create-cup *ngIf="page === 'create-cup'"></app-create-cup>
+  <app-create-school *ngIf="page === 'edit-school'"></app-create-school>
+  <app-schools *ngIf="page === 'schools'"></app-schools>
+</div>
