@@ -1,0 +1,39 @@
+<div class="container">
+
+  <h2>{{cup.name}}</h2>
+
+  <div class="announcement-date">
+    <h3>Data de anúncio</h3>
+    <span>{{cup.announcementDate}}</span>
+  </div>
+
+  <div class="enroll-period">
+    <h3>Período de inscrição</h3>
+    <span>{{cup.signUpPeriod[0] | date}} --- {{cup.signUpPeriod[1] | date}}</span>
+  </div>
+
+  <div class="games-period">
+    <h3>Período de jogos</h3>
+    <span>{{cup.cupGamesPeriod[0] | date}} --- {{cup.cupGamesPeriod[1] | date}}</span>
+  </div>
+
+  <div class="teams-container">
+    <h3>Times que participaram</h3>
+    <div class="teams-container__teams">
+      <div class="teams-container__teams__team" *ngFor="let team of cup.teams, let i = index">
+        <h4>{{team.name}}</h4>
+        <span>{{cup.teams[i].players}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="matches">
+    <h3>Partidas</h3>
+    <div class="matches__matche" *ngFor="let match of cup.matches">
+      <span>{{match}}</span>
+    </div>
+  </div>
+
+  <button (click)="exitFinished()">Voltar</button>
+
+</div>
