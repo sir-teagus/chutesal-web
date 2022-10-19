@@ -1,0 +1,6 @@
+.page-container{
+ display: flex;
+ justify-content: center;
+ width: 75rem;
+ margin: auto;
+}
