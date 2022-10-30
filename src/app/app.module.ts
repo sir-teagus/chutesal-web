@@ -12,6 +12,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { CupsComponent } from './cups/cups.component';
@@ -44,7 +46,9 @@ import { CreateTeamComponent } from './create-team/create-team.component';
     MatInputModule,
     MatIconModule,
     MatCommonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

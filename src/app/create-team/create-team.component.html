@@ -1,1 +1,80 @@
-<p>create-team works!</p>
+<div class="page-container">
+  <h1>Criar campeonato</h1>
+  <mat-card class="create-team">
+
+    <mat-form-field appearance="fill" class="create-team__select-cup">
+      <mat-label>Selecione o Campeonato</mat-label>
+      <mat-select [(ngModel)]="selectedCup" name="food" [disabled]="enrollsSearched">
+        <mat-option *ngFor="let cup of announcedCups" [value]="cup.name">
+          {{cup.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="create-team__button" (click)="getEnroll()">Buscar Inscrições</button>
+
+    <mat-accordion class="create-team__create-accordion" multi>
+      <mat-expansion-panel [expanded]="enrollsSearched" [disabled]="!enrollsSearched">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Criar Time
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-form-field class="create-team__create-accordion__input" appearance="fill">
+          <mat-label>Nome do time</mat-label>
+          <input matInput type="text" [(ngModel)]="teamName">
+          <button *ngIf="teamName" matSuffix mat-icon-button aria-label="Clear" (click)="teamName=''">
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="create-team__create-accordion__input">
+          <mat-label>Jogador 1</mat-label>
+          <mat-select [(ngModel)]="player1" name="food">
+            <mat-option *ngFor="let enroll of enrolls" [value]="enroll.fullName">
+              {{enroll.fullName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="create-team__create-accordion__input">
+          <mat-label>Jogador 2</mat-label>
+          <mat-select [(ngModel)]="player2" name="food">
+            <mat-option *ngFor="let enroll of enrolls" [value]="enroll.fullName">
+              {{enroll.fullName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="create-team__create-accordion__input">
+          <mat-label>Jogador 3</mat-label>
+          <mat-select [(ngModel)]="player3" name="food">
+            <mat-option *ngFor="let enroll of enrolls" [value]="enroll.fullName">
+              {{enroll.fullName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="create-team__create-accordion__input">
+          <mat-label>Jogador 4</mat-label>
+          <mat-select [(ngModel)]="player4" name="food">
+            <mat-option *ngFor="let enroll of enrolls" [value]="enroll.fullName">
+              {{enroll.fullName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="create-team__create-accordion__input">
+          <mat-label>Jogador 5</mat-label>
+          <mat-select [(ngModel)]="player5" name="food">
+            <mat-option *ngFor="let enroll of enrolls" [value]="enroll.fullName">
+              {{enroll.fullName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" (click)="cancel()" class="create-team__create-accordion__button">Cancelar</button>
+          <button mat-raised-button color="primary" (click)="createTeam(selectedCup.id)" class="create-team__create-accordion__button">Criar Time</button>
+        </div>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+
+  </mat-card>
+</div>

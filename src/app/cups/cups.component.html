@@ -11,6 +11,48 @@
         <p>{{ cup.cupGamesPeriod[0] | date:'dd/MM/yyyy'}} -- {{ cup.cupGamesPeriod[1] | date:'dd/MM/yyyy'}}</p>
         <h4>Data de Anúncio</h4>
         <p>{{ cup.announcementDate | date:'dd/MM/yyyy' }}</p>
+        <h2 *ngIf="cup.status === 'CANCELADO'">Campeonato Cancelado</h2>
+
+        <div class="cups-wrapper__card__info">
+          <mat-accordion *ngIf="cup.status !== 'CANCELADO'" >
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Sobre o Campeonato
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div class="cups-wrapper__card__info__paragraph">
+                <p>
+                  Campeonato no estilo Mata Mata
+                  Vencedores do Campeonato definidos nos últimos dois jogos,
+                  onde o penúltimo jogo define o terceiro lugar e quem irá jogar contra
+                  o time com a melhor campanha para definir o primeiro e segundo lugar.
+                </p>
+              </div>
+
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <div>
+          <mat-accordion *ngIf="cup.status !== 'CANCELADO'" >
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+              <mat-panel-title>
+                Ver Jogos
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+              <div>
+                <p *ngFor="let match of cup.matches">{{ match.timeA }} - {{ match.scoreA }} | {{ match.scoreB }} - {{ match.timeB }}</p>
+              </div>
+
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+
       </mat-card>
     </div>
   </div>
@@ -25,9 +67,55 @@
         <p>{{ cup.cupGamesPeriod[0] | date:'dd/MM/yyyy'}} -- {{ cup.cupGamesPeriod[1] | date:'dd/MM/yyyy'}}</p>
         <h4>Data de Anúncio</h4>
         <p>{{ cup.announcementDate | date:'dd/MM/yyyy' }}</p>
+
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                               (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Se inscreva no Campeonato
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="cups-wrapper__card__signup">
+              <mat-form-field class="cups-wrapper__card__signup__input" appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input matInput type="text" [(ngModel)]="playerName">
+                <button *ngIf="playerName" matSuffix mat-icon-button aria-label="Clear" (click)="playerName=''">
+                </button>
+              </mat-form-field>
+
+              <mat-form-field class="cups-wrapper__card__signup__input" appearance="fill">
+                <mat-label>Apelido</mat-label>
+                <input matInput type="text" [(ngModel)]="playerNickname">
+                <button *ngIf="playerNickname" matSuffix mat-icon-button aria-label="Clear" (click)="playerNickname=''">
+                </button>
+              </mat-form-field>
+
+              <mat-form-field class="cups-wrapper__card__signup__input" appearance="fill">
+                <mat-label>Data de Nascimento</mat-label>
+                <input matInput type="date" [(ngModel)]="playerBirthDate">
+                <button *ngIf="playerWhatsapp" matSuffix mat-icon-button aria-label="Clear" (click)="playerWhatsapp=''">
+                </button>
+              </mat-form-field>
+
+              <mat-form-field class="cups-wrapper__card__signup__input" appearance="fill">
+                <mat-label>Whatsapp</mat-label>
+                <input matInput type="text" [(ngModel)]="playerWhatsapp">
+                <button *ngIf="playerWhatsapp" matSuffix mat-icon-button aria-label="Clear" (click)="playerWhatsapp=''">
+                </button>
+              </mat-form-field>
+              <button mat-raised-button color="primary" class="cups-wrapper__card__signup__button" (click)="enrollInCup(cup.name, cup.id)">Se inscrever</button>
+            </div>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
       </mat-card>
+
     </div>
   </div>
+
   <div class="cups-wrapper">
     <h1>Campeonatos em Andamento</h1>
     <div class="cups-wrapper__card" *ngFor="let cup of ongoingCups">
@@ -39,6 +127,82 @@
         <p>{{ cup.cupGamesPeriod[0] | date:'dd/MM/yyyy'}} -- {{ cup.cupGamesPeriod[1] | date:'dd/MM/yyyy'}}</p>
         <h4>Data de Anúncio</h4>
         <p>{{ cup.announcementDate | date:'dd/MM/yyyy' }}</p>
+        <h4>Jogos</h4>
+        <div *ngFor="let match of cup.matches" class="cups-wrapper__card__games">
+          <span>{{ match.timeA }} - {{ match.scoreA }} | {{ match.scoreB }} - {{ match.timeB }}</span>
+        </div>
+
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Cadastre os Jogos e Resultados
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+            <div class="cups-wrapper__card__on-going" *ngIf="!loggedIn">
+              <mat-form-field class="cups-wrapper__card__on-going__input-login" appearance="fill">
+                <mat-label>Usuário</mat-label>
+                <input matInput type="text" [(ngModel)]="user">
+                <button *ngIf="user" matSuffix mat-icon-button aria-label="Clear" (click)="user=''">
+                </button>
+              </mat-form-field>
+
+              <mat-form-field class="cups-wrapper__card__on-going__input-login" appearance="fill">
+                <mat-label>Senha</mat-label>
+                <input matInput type="password" [(ngModel)]="password">
+                <button *ngIf="password" matSuffix mat-icon-button aria-label="Clear" (click)="password=''">
+                </button>
+              </mat-form-field>
+              <button mat-raised-button color="primary" class="cups-wrapper__card__on-going__button" (click)="verifyLogin()">Entrar</button>
+            </div>
+
+            <div class="cups-wrapper__card__on-going" *ngIf="loggedIn">
+
+              <div class="cups-wrapper__card__on-going__sign-games">
+                <form>
+                  <mat-form-field appearance="fill" class="cups-wrapper__card__on-going__sign-games__input">
+                    <mat-label>Time A</mat-label>
+                    <mat-select [(ngModel)]="teamA" name="food">
+                      <mat-option *ngFor="let team of cup.teams" [value]="team.name">
+                        {{team.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </form>
+                <mat-form-field class="cups-wrapper__card__on-going__sign-games__input-number" appearance="fill">
+                  <mat-label>Gols</mat-label>
+                  <input matInput type="number" [(ngModel)]="scoreA">
+                  <button *ngIf="scoreA" matSuffix mat-icon-button aria-label="Clear" (click)="scoreA=''">
+                  </button>
+                </mat-form-field>
+              </div>
+              <div class="cups-wrapper__card__on-going__sign-games">
+                <form>
+                  <mat-form-field appearance="fill" class="cups-wrapper__card__on-going__sign-games__input">
+                    <mat-label>Time B</mat-label>
+                    <mat-select [(ngModel)]="teamB" name="food">
+                      <mat-option *ngFor="let team of cup.teams" [value]="team.name">
+                        {{team.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </form>
+                <mat-form-field class="cups-wrapper__card__on-going__sign-games__input-number" appearance="fill">
+                  <mat-label>Gols</mat-label>
+                  <input matInput type="number" [(ngModel)]="scoreB">
+                  <button *ngIf="scoreB" matSuffix mat-icon-button aria-label="Clear" (click)="scoreB=''">
+                  </button>
+                </mat-form-field>
+              </div>
+
+              <button mat-raised-button color="primary" class="cups-wrapper__card__on-going__button" (click)="signGame(cup.id)">Cadastrar Jogo</button>
+            </div>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
       </mat-card>
     </div>
   </div>
