@@ -173,7 +173,7 @@
                 </form>
                 <mat-form-field class="cups-wrapper__card__on-going__sign-games__input-number" appearance="fill">
                   <mat-label>Gols</mat-label>
-                  <input matInput type="number" [(ngModel)]="scoreA">
+                  <input matInput type="text" [(ngModel)]="scoreA">
                   <button *ngIf="scoreA" matSuffix mat-icon-button aria-label="Clear" (click)="scoreA=''">
                   </button>
                 </mat-form-field>
@@ -191,7 +191,7 @@
                 </form>
                 <mat-form-field class="cups-wrapper__card__on-going__sign-games__input-number" appearance="fill">
                   <mat-label>Gols</mat-label>
-                  <input matInput type="number" [(ngModel)]="scoreB">
+                  <input matInput type="text" [(ngModel)]="scoreB">
                   <button *ngIf="scoreB" matSuffix mat-icon-button aria-label="Clear" (click)="scoreB=''">
                   </button>
                 </mat-form-field>

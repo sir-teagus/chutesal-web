@@ -24,7 +24,7 @@ public signUpToCup(id: number, body: Enroll): Observable<Enroll> {
 }
 
 public signUpGames(body: Match, id?: number): Observable<Match> {
-  return this.http.post<Match>(`${this.url}/cups/${id}/matches`, body);
+  return this.http.patch<Match>(`${this.url}/cups/${id}/matches`, body);
 }
 
 public getEnrollsByCup(id?: number): Observable<Enroll[]> {

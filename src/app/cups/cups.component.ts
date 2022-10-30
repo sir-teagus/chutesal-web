@@ -119,11 +119,12 @@ export class CupsComponent implements OnInit {
   }
 
   signGame(id?: number) {
-    const body = {
+    const body = {matches: [{
       timeA: this.teamA,
       scoreA: +this.scoreA,
       timeB: this.teamB,
       scoreB: +this.scoreB
+    }]
     }
     this.cupsService.signUpGames(body, id).subscribe(() => {
       console.log(body);
