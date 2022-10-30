@@ -9,5 +9,63 @@
 
   &__card {
     margin-top: 1rem;
+
+    &__signup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &__input {
+        width: 15rem;
+      }
+
+      &__button {
+        width: 100%;
+      }
+    }
+
+    &__on-going {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &__input-login {
+        width: 15rem;
+      }
+
+      &__sign-games {
+        display: flex;
+
+        &__input {
+          width: 10rem;
+          margin-right: 2rem;
+        }
+
+        &__input-number {
+          width: 4rem;
+        }
+
+        &__button {
+          width: 100%;
+        }
+      }
+    }
+
+    &__info {
+      margin-bottom: 1rem;
+
+      &__paragraph {
+        width: 15rem;
+        margin-bottom: 3rem;
+      }
+    }
+
+    &__games {
+      font-size: 1rem;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
   }
 }

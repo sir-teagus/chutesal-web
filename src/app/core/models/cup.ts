@@ -5,7 +5,7 @@ export class Cup {
   "id"?: number;
   "status"?: string;
   "name": string;
-  "teams?": Team[];
+  "teams"?: Team[];
   "signUpPeriod": string[];
   "cupGamesPeriod": string[];
   "announcementDate": Date;
